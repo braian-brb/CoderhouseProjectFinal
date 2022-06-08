@@ -1,6 +1,11 @@
 export const indexCtrl = {}
 
 indexCtrl.helloWorld = (req, res) => {
-  console.log('hello')
-  res.json({ mssg: 'Hello world' })
+  try {
+    console.log('hello')
+    res.json({ mssg: 'Hello world' })
+  } catch (error) {
+    console.log(error)
+    throw new Error()
+  }
 }
