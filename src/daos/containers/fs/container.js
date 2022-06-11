@@ -10,6 +10,7 @@ class Container {
   }
 
   getObjs = (id) => {
+    console.log('container', id)
     try {
       const allObjs = JSON.parse(fs.readFileSync(this.path, 'utf-8'))
       if (!id) {

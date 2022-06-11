@@ -3,6 +3,7 @@ import { productDao } from '../daos/index.daos.js'
 export const productModel = {}
 
 productModel.getProduct = (id) => {
+  Number(id)
   return productDao.getObjs(id)
 }
 

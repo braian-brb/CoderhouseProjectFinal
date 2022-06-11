@@ -5,11 +5,11 @@ productsCtrl.getProducts = (req, res) => {
   try {
     const { id } = req.params
     if (!id) {
-      const product = productModel.getProduct(id)
-      res.status(200).json({ product })
-    } else {
       const allProducts = productModel.getProducts()
       res.status(200).json({ allProducts })
+    } else {
+      const product = productModel.getProduct(Number(id))
+      res.status(200).json({ product })
     }
   } catch (error) {
     res.status(400).json({ mssg: error })
