@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Product 1",
+    "price": "12322",
+    "code": "P-01",
+    "stock": "1",
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+    "description": "This is a FIRST product",
+    "id": 1,
+    "timestamp": "6/10/2022, 9:17:02 PM"
+  },
+  {
+    "name": "Product 2",
+    "price": "12322",
+    "code": "P-02",
+    "stock": "1",
+    "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/calculator-math-tool-school-256.png",
+    "description": "This is a SECOND product",
+    "id": 2,
+    "timestamp": "6/10/2022, 9:17:19 PM"
+  }
+]

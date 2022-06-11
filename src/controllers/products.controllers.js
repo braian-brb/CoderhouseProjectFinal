@@ -1,17 +1,34 @@
+import { productModel } from '../services/products.models.js'
 export const productsCtrl = {}
 
 productsCtrl.getProducts = (req, res) => {
-  const { id } = req.params
-  if (!id) {
-    res.send('Return all products')
-  } else {
-    res.send(`Products with ID: ${id}`)
+  try {
+    const { id } = req.params
+    if (!id) {
+      const product = productModel.getProduct(id)
+      res.status(200).json({ product })
+    } else {
+      const allProducts = productModel.getProducts()
+      res.status(200).json({ allProducts })
+    }
+  } catch (error) {
+    res.status(400).json({ mssg: error })
+    throw new Error(error)
   }
 }
 
 productsCtrl.addProduct = (req, res) => {
-  const { name } = req.body
-  res.send(`Product add with name: ${name}`)
+  const {
+    name,
+    price,
+    code,
+    stock,
+    thumbnail,
+    description
+  } = req.body
+  const product = productModel.addProduct(name, price, code, stock, thumbnail, description)
+  if (!product) res.status(400).json({ mssg: 'ERROR ADDING PRODUCT' })
+  else res.status(200).json({ mssg: 'Product added succesfully' })
 }
 
 productsCtrl.updateProduct = (req, res) => {

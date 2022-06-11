@@ -1,11 +1,17 @@
 export const indexCtrl = {}
 
-indexCtrl.helloWorld = (req, res) => {
-  try {
-    console.log('hello')
-    res.json({ mssg: 'Hello world' })
-  } catch (error) {
-    console.log(error)
-    throw new Error()
-  }
+indexCtrl.renderIndex = (req, res) => {
+  res.render('index')
+}
+
+indexCtrl.renderProducts = (req, res) => {
+  res.render('products')
+}
+
+indexCtrl.renderProductsForm = (req, res) => {
+  res.render('product-form')
+}
+
+indexCtrl.renderCarts = (req, res) => {
+  res.render('carts')
 }
