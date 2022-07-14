@@ -1,5 +1,5 @@
 {
-  "name": "coderhouseprojectfinal",
+  "name": "proyecto-final-coderhouse",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,17 +12,22 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "morgan": "^1.10.0",
-    "nodemon": "^2.0.16",
-    "standard": "^17.0.0"
-  },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
-    "express-handlebars": "^6.0.6",
-    "firebase-admin": "^10.2.0",
-    "mongoose": "^6.3.6"
+    "firebase-admin": "^11.0.0",
+    "helmet": "^5.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "minimist": "^1.2.6",
+    "mongoose": "^6.4.4",
+    "winston": "^3.8.1"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19",
+    "standard": "^17.0.0"
   },
   "eslintConfig": {
     "extends": "./node_modules/standard/eslintrc.json"

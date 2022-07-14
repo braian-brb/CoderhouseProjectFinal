@@ -1,0 +1,26 @@
+[
+  {
+    "name": "760",
+    "price": 30,
+    "code": "MPT-753463330",
+    "stock": 33,
+    "description": "300",
+    "id": 1
+  },
+  {
+    "name": "760",
+    "price": 30,
+    "code": "MPT-753463330",
+    "stock": 33,
+    "description": "300",
+    "id": 3
+  },
+  {
+    "name": "760",
+    "price": 30,
+    "code": "MPT-753463330",
+    "stock": 33,
+    "description": "300",
+    "id": 4
+  }
+]
