@@ -1,30 +1,46 @@
-// TODO: CAMBIAR A IMPORTS DINAMICOS
-// TODO: CORREGIR ERRORES y que no se detenga el sv
 import config from '../config/config.js'
 
 const { db } = config
-
-let productDao
-let cartDao
-
-if (db.PERSIST === 'mongo') {
-  import('./containers/mongo/ProductMongo.js')
-    .then(({ default: ContainerProductMongo }) => (productDao = new ContainerProductMongo()))
-
-  import('./containers/mongo/CartMongo.js')
-    .then(({ default: ContainerCartMongo }) => (cartDao = new ContainerCartMongo()))
-} else if (db.PERSIST === 'fs') {
-  import('./containers/fs/ProductFS.js')
-    .then(({ default: ContainerProductFs }) => (productDao = new ContainerProductFs()))
-
-  import('./containers/fs/CartFs.js')
-    .then(({ default: ContainerCartFs }) => (cartDao = new ContainerCartFs()))
-} else if (db.PERSIST === 'firebase') {
-  import('./containers/firebase/ProductFirebase.js')
-    .then(({ default: ContainerProductFirebase }) => (productDao = new ContainerProductFirebase()))
-
-  import('./containers/firebase/CartFirebase.js')
-    .then(({ default: ContainerCartFirebase }) => (cartDao = new ContainerCartFirebase()))
+class ProductDaoFactory {
+  async create (persist) {
+    switch (persist) {
+      case 'mongo':{
+        const { default: ContainerProductMongo } = await import('./containers/mongo/ProductMongo.js')
+        return ContainerProductMongo.getInstance()
+      }
+      case 'fs':{
+        const { default: ContainerProductFs } = await import('./containers/fs/ProductFS.js')
+        return ContainerProductFs.getInstance()
+      }
+      case 'firebase':{
+        const { default: ContainerProductFirebase } = await import('./containers/firebase/ProductFirebase.js')
+        return ContainerProductFirebase.getInstance()
+      }
+    }
+  }
 }
 
-export { productDao, cartDao }
+class CartDaoFactory {
+  async create (persist) {
+    switch (persist) {
+      case 'mongo':{
+        const { default: ContainerCartMongo } = await import('./containers/mongo/CartMongo.js')
+        return ContainerCartMongo.getInstance()
+      }
+      case 'fs':{
+        const { default: ContainerCartFs } = await import('./containers/fs/CartFs.js')
+        return ContainerCartFs.getInstance()
+      }
+      case 'firebase':{
+        const { default: ContainerCartFirebase } = await import('./containers/firebase/CartFirebase.js')
+        return ContainerCartFirebase.getInstance()
+      }
+    }
+  }
+}
+
+const productDaoFactory = new ProductDaoFactory()
+const cartDaoFactory = new CartDaoFactory()
+
+export const productDao = await productDaoFactory.create(db.PERSIST)
+export const cartDao = await cartDaoFactory.create(db.PERSIST)

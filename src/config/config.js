@@ -12,7 +12,7 @@ const config = {
   },
 
   db: {
-    PERSIST: args.persist || args.db || 'mongo'
+    PERSIST: args.persist || args.db || 'firebase'
   },
 
   mongo: {

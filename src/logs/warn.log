@@ -5,3 +5,17 @@ warn: Non-existent resource URL: /QUESO/products/ Method: GET
 warn: Non-existent resource URL: /QUESO/products/ Method: GET
 warn: Non-existent resource URL: /QUESO/products/ Method: GET
 warn: Non-existent resource URL: /QUESO/products/ Method: GET
+warn: Non-existent resource URL: / Method: GET
+warn: Non-existent resource URL: /home Method: GET
+warn: Non-existent resource URL: / Method: GET
+warn: Non-existent resource URL: /favicon.ico Method: GET
+warn: Non-existent resource URL: /users/signin Method: GET
+warn: Non-existent resource URL: /socket.io/socket.io.js Method: GET
+warn: Non-existent resource URL: /home.css Method: GET
+warn: Non-existent resource URL: /login.css Method: GET
+warn: Non-existent resource URL: /home.js Method: GET
+warn: Non-existent resource URL: /home.css Method: GET
+warn: Non-existent resource URL: /login.css Method: GET
+warn: Non-existent resource URL: /favicon.ico Method: GET
+warn: Non-existent resource URL: /favicon.ico Method: GET
+warn: Non-existent resource URL: /api/carts/products Method: POST

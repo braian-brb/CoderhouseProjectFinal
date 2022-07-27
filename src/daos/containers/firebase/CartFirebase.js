@@ -1,8 +1,9 @@
 import ContainerFirebase from './containerFirebase.js'
 
-export default class cartsFirebase extends ContainerFirebase {
+export default class SingletonCartsFirebase extends ContainerFirebase {
   constructor () {
     super('carts')
+    this.value = Math.random(100)
   }
 
   async getProductInCart (cartFind, idProduct) {
@@ -15,5 +16,16 @@ export default class cartsFirebase extends ContainerFirebase {
       date: new Date().toLocaleString()
     }
     return await super.create(cart)
+  }
+
+  printValue () {
+    console.log(this.value)
+  }
+
+  static getInstance () {
+    if (!this.instance) {
+      this.instance = new this()
+    }
+    return this.instance
   }
 }
