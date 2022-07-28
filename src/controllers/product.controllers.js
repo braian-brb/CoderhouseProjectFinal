@@ -1,17 +1,19 @@
-import { productModel } from '../services/product.models.js'
+import ProductServices from '../services/product.services.js'
 import { logger } from '../utils/index.utils.js'
 
-export const productsCtrl = {}
 const errorMessage = 'An error has occurred'
+
+const productsCtrl = {}
+const productServices = new ProductServices()
 
 productsCtrl.getProducts = async (req, res) => {
   try {
     let products
     const { id } = req.params
     if (!id) {
-      products = await productModel.getAll()
+      products = await productServices.getAll()
     } else {
-      products = await productModel.getById(id)
+      products = await productServices.getById(id)
     }
     res
       .status(200)
@@ -22,7 +24,7 @@ productsCtrl.getProducts = async (req, res) => {
   }
 }
 
-productsCtrl.addProduct = (req, res) => {
+productsCtrl.addProduct = async (req, res) => {
   try {
     const {
       name,
@@ -36,7 +38,7 @@ productsCtrl.addProduct = (req, res) => {
     if (!productValidate) {
       throw new Error('The product need Name and Code')
     }
-    const product = productModel.saveProduct(name, price, code, stock, thumbnail, description)
+    const product = await productServices.saveProduct(name, price, code, stock, thumbnail, description)
     if (!product) {
       res
         .status(400)
@@ -65,7 +67,7 @@ productsCtrl.updateProduct = async (req, res) => {
       description: req.body.description
     }
 
-    const updatedProduct = await productModel.updateProduct(id, newData)
+    const updatedProduct = await productServices.updateProduct(id, newData)
     res
       .status(202)
       .json({ updatedProduct })
@@ -79,7 +81,7 @@ productsCtrl.deleteProduct = async (req, res) => {
   try {
     const { id } = req.params
     if (!id) res.status(400).json({ mssg: 'error' })
-    await productModel.deleteProduct(id)
+    await productServices.deleteProduct(id)
     res
       .status(204)
       .json({})
@@ -88,3 +90,5 @@ productsCtrl.deleteProduct = async (req, res) => {
     res.status(500).json({ message: errorMessage })
   }
 }
+
+export default productsCtrl
