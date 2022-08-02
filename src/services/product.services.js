@@ -28,7 +28,7 @@ export default class ProductService {
         thumbnail,
         description
       }
-      return this.#productRepository.createProduct(newProduct)
+      return await this.#productRepository.createProduct(newProduct)
     } catch (error) {
 
     }

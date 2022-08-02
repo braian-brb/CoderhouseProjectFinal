@@ -12,8 +12,8 @@ const productSchema = mongoose.Schema(
     },
     code: {
       type: String,
-      trim: true,
-      required: true
+      trim: true
+      // required: true
       // unique: true
     },
     thumbnail: {

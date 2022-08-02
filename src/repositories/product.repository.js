@@ -18,7 +18,7 @@ export default class ProductRepository {
   }
 
   // TODO: Arreglar que el codigo sea unico   no tire error si hay repetido
-  createProduct (name, price, code, stock, thumbnail, description) {
+  createProduct ({ name, price, code, stock, thumbnail, description }) {
     try {
       const newProduct = {
         name,

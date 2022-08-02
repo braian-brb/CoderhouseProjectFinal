@@ -39,6 +39,7 @@ productsCtrl.addProduct = async (req, res) => {
       throw new Error('The product need Name and Code')
     }
     const product = await productServices.saveProduct(name, price, code, stock, thumbnail, description)
+    console.log(product)
     if (!product) {
       res
         .status(400)
@@ -46,7 +47,10 @@ productsCtrl.addProduct = async (req, res) => {
     } else {
       res
         .status(201)
-        .json({ mssg: 'Product added succesfully' })
+        .json({
+          mssg: 'Product added succesfully',
+          productId: product.id
+        })
     }
   } catch (error) {
     logger.error(error)

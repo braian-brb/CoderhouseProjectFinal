@@ -5,6 +5,7 @@ import config from './config/config.js'
 import logger from './utils/logger.js'
 
 const { server } = config
+logger.info(`Persist selected: ${config.db.PERSIST}`)
 
 const MODE = (server.MODE).toUpperCase()
 

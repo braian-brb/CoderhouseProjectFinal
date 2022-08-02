@@ -5,15 +5,19 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha src/test/chaiHttp.test.js",
     "start": "node src/index.js",
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "manualTest": "node src/test/testManual/product.test.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
@@ -22,6 +26,7 @@
     "helmet": "^5.1.0",
     "jsonwebtoken": "^8.5.1",
     "minimist": "^1.2.6",
+    "mocha": "^10.0.0",
     "mongoose": "^6.4.4",
     "winston": "^3.8.1"
   },
